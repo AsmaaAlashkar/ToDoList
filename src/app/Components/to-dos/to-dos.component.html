@@ -32,7 +32,7 @@
                         <td>{{ toDo.title }}</td>
                         <td>
                             <i class="fa-solid fa-eye text-success mx-2" (click)="viewToDoDetails(todo.id)"></i>
-                            <i class="fa-solid fa-pen text-primary mx-2" (click)="updateToDo(todo.id,toDo)"></i>
+                            <i class="fa-solid fa-pen text-primary mx-2" (click)="updateToDo(todo.id,todo)"></i>
                             <i class="fa-solid fa-trash text-danger mx-2" (click)="deleteToDo(todo.id)"></i>
                         </td>
                     </tr>
