@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.custom-btn {
+    background-color: rgb(155 127 91) !important; /* Adjust this to match the exact logo color */
+    border-color: rgb(155 127 91) !important;
+    color: white !important;
+  }
+  
