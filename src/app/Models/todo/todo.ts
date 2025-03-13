@@ -2,7 +2,7 @@ export interface Todo {
     id: number;
     title: string;
     description: string;
-    status: boolean;
+    status: number;
     createdAt: Date;
     updatedAt: Date;
 }

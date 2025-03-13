@@ -4,35 +4,47 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
-// import { FooterComponent } from '../Components/footer/footer.component';
-// import { HeaderComponent } from '../Components/header/header.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TagModule } from 'primeng/tag';
 
-// const components = [
-//   HeaderComponent,
-//   FooterComponent
-// ];
 const modules = [
   CommonModule,
+  RouterModule,
+  FormsModule,
+  ReactiveFormsModule,
+
+];
+
+const materialModules =[
   MatIconModule,
   MatDividerModule,
   MatButtonModule,
-  RouterModule,
-  FormsModule
 ];
 
 const primengModules = [
-  TableModule
+  TableModule,
+  InputTextModule,
+  ButtonModule,
+  InputTextareaModule,
+  TagModule
 ];
 
 @NgModule({
   declarations: [],
   // declarations: components,
-  imports: [...modules, ...primengModules],
+  imports: [
+    ...modules,
+    ...primengModules,
+    ...materialModules,
+  ],
   exports: [
     ...modules,
-    ...primengModules
+    ...primengModules,
+    ...materialModules,
     // ...components
   ]
 })

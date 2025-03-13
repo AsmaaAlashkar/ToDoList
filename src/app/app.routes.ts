@@ -3,8 +3,10 @@ import { ToDosComponent } from './Components/to-dos/to-dos.component';
 import { HomeComponent } from './Components/home/home.component';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
-import { ToDoDetailsComponent } from './Components/to-do-details/to-do-details.component';
+import { ToDoDetailsComponent } from './Components/to-dos/to-do-details/to-do-details.component';
 import { LoginComponent } from './Components/auth/login/login.component';
+import { EditTodoComponent } from './Components/to-dos/edit-todo/edit-todo.component';
+import { AddTodoComponent } from './Components/to-dos/add-todo/add-todo.component';
 
 export const routes: Routes = [
     {
@@ -21,6 +23,18 @@ export const routes: Routes = [
         component: ToDosComponent
     },
     {
+        path: 'details/:id',
+        component: ToDoDetailsComponent
+    },
+    {
+        path:'add-todo',
+        component: AddTodoComponent
+    },
+    {
+        path: 'edit-todo/:id',
+        component: EditTodoComponent
+    },
+    {
         path: 'about',
         component: AboutUsComponent
     },
@@ -28,10 +42,7 @@ export const routes: Routes = [
         path: 'contact',
         component: ContactUsComponent
     },
-    {
-        path: 'details/:id',
-        component: ToDoDetailsComponent
-    },
+    
     {
         path: 'login',
         component: LoginComponent

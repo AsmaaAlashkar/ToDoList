@@ -1,0 +1,22 @@
+<div class="vh-100 w-100 position-relative" [ngStyle]="{
+    'background-image': 'url(/assets/images/art-de-la-To-Do-List.jpg)',
+    'background-size': 'cover',
+    'background-position': 'center',
+    'background-repeat': 'no-repeat'
+  }">
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+    <div class="container position-absolute">
+        <form [formGroup]="formGroup" class="m-5 w-100">
+            <span class="p-float-label"> 
+                <input type="text" pInputText formControlName="title" class="w-100"/> 
+                <label>Title</label> 
+            </span>
+            <span class="p-float-label my-5"> 
+                <textarea rows="5" cols="30" pInputTextarea formControlName="description" class="w-100">
+                </textarea>                
+                <label>Description</label> 
+            </span>
+            <p-button label="Submit" severity="warning"/>
+        </form>
+    </div>
+</div>
