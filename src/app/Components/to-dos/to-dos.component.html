@@ -5,7 +5,14 @@
         <p-button label="Add Task" [outlined]="true" severity="warning" />
     </div>
     <div class="row my-5">
-        <p-table [value]="toDoList" styleClass="p-datatable-striped" [tableStyle]="{ 'min-width': '50rem' }">
+        <p-table [value]="toDoList" 
+        dataKey="id"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        styleClass="p-datatable-striped" 
+        [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header">
                 <tr>
                     <th>No.</th>
@@ -14,12 +21,12 @@
                     <th>Action</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-todo>
+            <ng-template pTemplate="body" let-todo let-index="rowIndex">
                 <tr>
-                    <td>{{ count }}</td>
-                    <td>{{ toDo.title }}</td>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ todo.title }}</td>
                     <td>
-                        <p-tag [value]="todo.status" [severity]="" />
+                        <p-tag [value]="todo.status" [severity]="getSeverity(todo.status)" />
                     </td>
                     <td>
                         <i class="fa-solid fa-eye text-success mx-2" (click)="viewToDoDetails(todo.id)"></i>

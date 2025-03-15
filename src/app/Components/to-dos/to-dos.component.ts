@@ -11,24 +11,36 @@ import { TodoService } from '../../services/todo/todo.service';
   styleUrl: './to-dos.component.css'
 })
 export class ToDosComponent implements OnInit{
-  count:number = 0;
-  IsTodo:boolean = false;
-  backgroundImage ="";
+  loading: boolean = true;
+  IsTodo:boolean = true;
   toDo: Todo = {} as Todo;
   toDoList!: Todo[];
   constructor(private todoService: TodoService){}
   ngOnInit(): void {
     console.log("todo started");
-
-    this.todos();
-    
+    this.todos(); 
   }
 
+  getSeverity(status: string):string {
+    switch (status) {
+      case 'Pending': return 'info';
+      case 'InProgress': return 'primary';
+      case 'Completed': return 'success';
+      case 'Canceled': return 'danger';
+      case 'OnHold': return 'warning';
+      default: return 'info';
+    }
+  }
+  
+  
   todos(){
     this.todoService.getTodos().subscribe({
       next:res =>{
-        console.log('res',res);
         this.toDoList = res;
+        this.loading = false;        
+        if (this.toDoList.length<=0) {
+          this.IsTodo== false;
+        }
       }
     });
   }
