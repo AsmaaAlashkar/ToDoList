@@ -10,7 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TagModule } from 'primeng/tag';
-
+import { DropdownModule } from 'primeng/dropdown';
 const modules = [
   CommonModule,
   RouterModule,
@@ -30,7 +30,8 @@ const primengModules = [
   InputTextModule,
   ButtonModule,
   InputTextareaModule,
-  TagModule
+  TagModule,
+  DropdownModule
 ];
 
 @NgModule({

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { Todo } from '../../../Models/todo/todo';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { TodoService } from '../../../services/todo/todo.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -12,7 +13,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class AddTodoComponent implements OnInit{
   formGroup!: FormGroup;
-  constructor(private fb:FormBuilder){}
+  statuses!:string[];
+  constructor(private fb:FormBuilder, private todoService:TodoService){}
   todo:Todo ={} as Todo;
   ngOnInit(): void {
     this.formGroup = this.fb.group({
@@ -22,10 +24,29 @@ export class AddTodoComponent implements OnInit{
         Validators.maxLength(50)]
       ),
       description: new FormControl(''),
-      
+      status: new FormControl('Pending')
+    });
+    this.getStatuses();
+  }
+  getStatuses(){
+    this.todoService.getStatuses().subscribe({
+      next: res =>{
+        console.log("statuses", res); 
+        this.statuses = res;     
+      }
     });
   }
-  addToDo() {
-
+  addTask(form:NgForm) {
+    console.log('form',form);
+    
+    // this.todoService.createTodo(todo).subscribe({
+    //   next:res=>{
+    //     console.log('create', res);
+    //   },
+    //   error: err=>{
+    //     console.log('error',err);
+        
+    //   }
+    // });
   }
 }

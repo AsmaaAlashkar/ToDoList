@@ -11,18 +11,25 @@ export class TodoService {
   todoApi = `${environment.apiUrl}ToDo`;
   constructor(private http: HttpClient) { }
   getTodos():Observable<Todo[]>{
-    return this.http.get<Todo[]>(`${this.todoApi}/GetAllTodos`);
+    return this.http.get<Todo[]>(`${this.todoApi}/getAllTodos`);
   }
   getTodoById(id:number):Observable<Todo>{
-    return this.http.get<Todo>(`${this.todoApi}/GetTodoById/${id}`);
+    return this.http.get<Todo>(`${this.todoApi}/getTodoById/${id}`);
+  }
+  getStatuses():Observable<string[]>{
+    return this.http.get<string[]>(`${this.todoApi}/statuses`);
+  }
+  getTodosByStatus(status: string):Observable<Todo[]>{
+    return this.http.get<Todo[]>(`${this.todoApi}/getTodosByStatus/${status}`);
+
   }
   createTodo(todo:Todo):Observable<Todo>{
-    return this.http.post<Todo>(`${this.todoApi}/CreateTodo`,todo);
+    return this.http.post<Todo>(`${this.todoApi}/createTodo`,todo);
   }
   updateTodo(todo:Todo):Observable<Todo>{
-    return this.http.put<Todo>(`${this.todoApi}/UpdateTodo/${todo.id}`,todo);
+    return this.http.put<Todo>(`${this.todoApi}/updateTodo/${todo.id}`,todo);
   }
   deleteTodo(id:number):Observable<Todo>{
-    return this.http.get<Todo>(`${this.todoApi}/DeleteTodo/${id}`);
+    return this.http.get<Todo>(`${this.todoApi}/deleteTodo/${id}`);
   }
 }

@@ -12,12 +12,12 @@ import { TodoService } from '../../services/todo/todo.service';
 })
 export class ToDosComponent implements OnInit{
   loading: boolean = true;
-  IsTodo:boolean = true;
-  toDo: Todo = {} as Todo;
   toDoList!: Todo[];
+  statuses!:string[];
   constructor(private todoService: TodoService){}
   ngOnInit(): void {
     console.log("todo started");
+    this.getStatuses();
     this.todos(); 
   }
 
@@ -38,14 +38,18 @@ export class ToDosComponent implements OnInit{
       next:res =>{
         this.toDoList = res;
         this.loading = false;        
-        if (this.toDoList.length<=0) {
-          this.IsTodo== false;
-        }
       }
     });
   }
 
-  viewToDoDetails(id:number) {}
-  updateToDo(id:number, toDoData:Todo) {}
+  getStatuses(){
+    this.todoService.getStatuses().subscribe({
+      next: res =>{
+        console.log("statuses", res); 
+        this.statuses = res;     
+      }
+    });
+  }
+
   deleteToDo(id:number) {}
 }
