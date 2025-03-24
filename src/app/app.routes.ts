@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { ToDosComponent } from './Components/to-dos/to-dos.component';
-import { HomeComponent } from './Components/home/home.component';
-import { AboutUsComponent } from './Components/about-us/about-us.component';
-import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+
 import { ToDoDetailsComponent } from './Components/to-dos/to-do-details/to-do-details.component';
 import { LoginComponent } from './Components/auth/login/login.component';
 import { EditTodoComponent } from './Components/to-dos/edit-todo/edit-todo.component';
@@ -11,13 +9,10 @@ import { AddTodoComponent } from './Components/to-dos/add-todo/add-todo.componen
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'todos',
         pathMatch: 'full'
     },
-    {
-        path: 'home',
-        component: HomeComponent
-    },
+
     {
         path:'todos',
         component: ToDosComponent
@@ -33,14 +28,6 @@ export const routes: Routes = [
     {
         path: 'edit-todo/:id',
         component: EditTodoComponent
-    },
-    {
-        path: 'about',
-        component: AboutUsComponent
-    },
-    {
-        path: 'contact',
-        component: ContactUsComponent
     },
     
     {
