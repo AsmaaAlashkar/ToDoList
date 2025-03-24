@@ -29,7 +29,7 @@ export class TodoService {
   updateTodo(todo:Todo):Observable<Todo>{
     return this.http.put<Todo>(`${this.todoApi}/updateTodo/${todo.id}`,todo);
   }
-  deleteTodo(id:number):Observable<Todo>{
-    return this.http.get<Todo>(`${this.todoApi}/deleteTodo/${id}`);
+  deleteTodo(id:number):Observable<any>{
+    return this.http.delete(`${this.todoApi}/deleteTodo/${id}`, { responseType: 'text' as 'json' });
   }
 }

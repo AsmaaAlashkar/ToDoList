@@ -1,1 +1,21 @@
-<p>edit-todo works!</p>
+<div *ngIf="formGroup" class="container my-5 p-3 bg-light rounded" [style]="{'max-width':'500px'}">
+    <p-toast />
+    <form [formGroup]="formGroup" class="w-100" (ngSubmit)="updateTask()">
+        <div class="mb-5">
+            <label>Title</label>
+            <input type="text" pInputText formControlName="title" class="w-100 ng-dirty" />
+        </div>
+        <div class="mb-5">
+            <label>Description</label>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="description" class="w-100">
+            </textarea>
+        </div>
+        <div class="mb-5">
+            <label class="d-block">Status</label>
+            <p-dropdown formControlName="status" [options]="statuses" placeholder="Select One" [showClear]="true"
+                [style]="{'minWidth':'100%'}">
+            </p-dropdown>
+        </div>
+        <p-button label="Save" type="Submit" severity="primary" [disabled]="formGroup.invalid"/>
+    </form>
+</div>

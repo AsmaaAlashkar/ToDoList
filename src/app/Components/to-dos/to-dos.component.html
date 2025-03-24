@@ -1,5 +1,6 @@
 <div class="position-relative text-white p-5 container">
-
+    <p-toast />
+    <p-confirmDialog />
     <div class="row">
         <p-button label="Add Task" [outlined]="true" severity="warning" [routerLink]="'/add-todo'" />
     </div>
@@ -39,15 +40,13 @@
                         <p-tag [value]="todo.status" [severity]="getSeverity(todo.status)" />
                     </td>
                     <td>
-                        <a [routerLink]="'/details/:id'">
-                            <i class="fa-solid fa-eye text-success mx-2"></i>
-                        </a>
-                        <a [routerLink]="'/edit-todo/:id'">
-                            <i class="fa-solid fa-pen text-primary mx-2"></i>
-                        </a>
-                        <a (click)="deleteToDo(todo.id)" class="pe-none">
-                            <i class="fa-solid fa-trash text-danger mx-2"></i>
-                        </a>
+                        <p-button [routerLink]="['/details', todo.id]" icon="fa-solid fa-eye" severity="success"
+                            [rounded]="true" [text]="true"/>
+
+                        <p-button [routerLink]="['/edit-todo', todo.id]" icon="fa-solid fa-pen" severity="primary"
+                            [rounded]="true" [text]="true"/>
+                        <p-button (onClick)="deleteToDo(todo.id, $event)" icon="fa-solid fa-trash" severity="danger"
+                            [rounded]="true" [text]="true"/>
                     </td>
                 </tr>
             </ng-template>

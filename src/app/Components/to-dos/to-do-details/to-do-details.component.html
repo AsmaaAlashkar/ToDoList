@@ -1,1 +1,16 @@
-<p>to-do-details works!</p>
+<div class="container card flex justify-content-center my-5" [style]="{ 'max-width': '700px' }">
+    <p-card header="{{ todo.title }}" class="w-100">
+        <p class="mb-2">
+            {{ todo.description }}
+        </p>
+        <p class="mb-2">stateus: {{ todo.status }}</p>
+        <p class="mb-2 d-flex justify-content-around">
+            <span> Created At: {{ todo.createdAt | date : "medium" }} </span>
+            <span> Last Updated : at {{ todo.updatedAt | date : "medium" }} </span>
+        </p>
+        <div>
+            <p-button label="Edit" [routerLink]="['/edit-todo', todo.id]" severity="warning"/>
+            <p-button label="Back" [routerLink]="'/todos'" />
+        </div>
+    </p-card>
+</div>

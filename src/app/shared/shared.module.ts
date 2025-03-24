@@ -11,6 +11,11 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { CardModule } from 'primeng/card';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 const modules = [
   CommonModule,
   RouterModule,
@@ -31,12 +36,14 @@ const primengModules = [
   ButtonModule,
   InputTextareaModule,
   TagModule,
-  DropdownModule
+  DropdownModule,
+  ToastModule,
+  CardModule,
+  ConfirmDialogModule
 ];
 
 @NgModule({
   declarations: [],
-  // declarations: components,
   imports: [
     ...modules,
     ...primengModules,
@@ -46,7 +53,10 @@ const primengModules = [
     ...modules,
     ...primengModules,
     ...materialModules,
-    // ...components
+  ],
+  providers:[
+    MessageService,
+    ConfirmationService
   ]
 })
 export class SharedModule { }

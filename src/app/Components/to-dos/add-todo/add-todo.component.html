@@ -1,29 +1,21 @@
-<div class="vh-100 w-100 position-relative" [ngStyle]="{
-    'background-image': 'url(/assets/images/art-de-la-To-Do-List.jpg)',
-    'background-size': 'cover',
-    'background-position': 'center',
-    'background-repeat': 'no-repeat'
-  }">
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
-    <div class="container position-absolute">
-        <form [formGroup]="formGroup" class="m-5 w-100" (ngSubmit)="addTask($event)">
-            <span class="p-float-label mb-5">
-                <input type="text" pInputText formControlName="title" class="w-100 ng-dirty" />
-                <label>Title</label>
-            </span>
-            <span class="p-float-label mb-5">
-                <textarea rows="5" cols="30" pInputTextarea formControlName="description" class="w-100">
+<div class="container my-5 p-3 bg-secondary rounded" [style]="{'max-width':'500px'}">
+    <p-toast />
+    <form [formGroup]="formGroup" class="w-100" (ngSubmit)="addTask()">
+        <div class="mb-5">
+            <label>Title</label>
+            <input type="text" pInputText formControlName="title" class="w-100 ng-dirty" />
+        </div>
+        <div class="mb-5">
+            <label>Description</label>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="description" class="w-100">
                 </textarea>
-                <label>Description</label>
-            </span>
-            <div class="mb-5">
-                <label>Status</label>
-                <p-dropdown formControlName="status" [options]="statuses" placeholder="Select One" [showClear]="true" class="w-100">
-                </p-dropdown>
-            </div>
-
-            <p-button label="Submit" type="Submit" severity="warning" [disabled]="formGroup.invalid"/>
-        </form>
-        <p>{{ todo | json }}</p>
-    </div>
+        </div>
+        <div class="mb-5">
+            <label class="d-block">Status</label>
+            <p-dropdown formControlName="status" [options]="statuses" placeholder="Select One" [showClear]="true"
+                [style]="{'minWidth':'100%'}">
+            </p-dropdown>
+        </div>
+        <p-button label="Submit" type="Submit" severity="warning" [disabled]="formGroup.invalid"/>
+    </form>
 </div>

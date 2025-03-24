@@ -6,4 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border-color: rgb(155 127 91) !important;
     color: white !important;
   }
+  .custom-color{
+    color:rgb(155 127 91) !important ;
+  }
   
